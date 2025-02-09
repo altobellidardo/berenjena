@@ -20,5 +20,5 @@ export async function isAdmin (token: string | undefined, roomId: string) {
 
   if (tokenData?.id !== adminId) return false
 
-  return true
+  return { adminId }
 }
