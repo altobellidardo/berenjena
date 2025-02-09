@@ -14,3 +14,10 @@ export async function DbClearRoom (roomId: string) {
     .delete()
     .eq('room_id', roomId)
 }
+
+export async function DbUpdatePlayer (userId: string, userName: string) {
+  return await supabase
+    .from('players')
+    .update({ name: userName })
+    .eq('id', userId)
+}
