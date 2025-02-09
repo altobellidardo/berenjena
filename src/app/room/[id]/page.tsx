@@ -1,5 +1,7 @@
-import { Button } from "@/components/ui"
-import Link from "next/link"
+import { cookies } from "next/headers"
+import AdminPage from "./adminPage"
+import GuestPage from "./guestPage"
+import { isAdmin } from "@/utils/isAdmin"
 
 interface RoomIdPageProps {
   params: { id: string }
@@ -8,13 +10,11 @@ interface RoomIdPageProps {
 async function RoomIdPage ({ params }: RoomIdPageProps) {
   const { id: roomId } = await params
 
-  return (
-    <main>
-      RoomIdPage: {roomId}
-
-      <Link href="/"><Button className="p-2 bg-red-200 text-black">Home</Button></Link>
-    </main>
-  )
+  const cookieStore = await cookies()
+  const token = cookieStore.get('session')?.value
+  
+  if (!await isAdmin(token, roomId)) return <GuestPage />
+  return <AdminPage roomId={roomId} />
 }
 
 export default RoomIdPage

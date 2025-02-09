@@ -19,3 +19,11 @@ export async function DbGetRoomByAdminId (adminId: string) {
     .eq('admin_id', adminId)
     .single()
 }
+
+export async function DbGetAdmin (roomId: string) {
+  return await supabase
+    .from('rooms')
+    .select('admin_id')
+    .eq('id', roomId)
+    .single()
+}
