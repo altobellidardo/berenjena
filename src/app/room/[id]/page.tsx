@@ -13,8 +13,9 @@ async function RoomIdPage ({ params }: RoomIdPageProps) {
   const cookieStore = await cookies()
   const token = cookieStore.get('session')?.value
   
-  if (!await isAdmin(token, roomId)) return <GuestPage />
-  return <AdminPage roomId={roomId} />
+  const res = await isAdmin(token, roomId)
+  if (!res) return <GuestPage />
+  return <AdminPage roomId={roomId} adminId={res.adminId} />
 }
 
 export default RoomIdPage

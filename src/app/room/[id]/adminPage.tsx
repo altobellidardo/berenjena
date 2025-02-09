@@ -1,12 +1,22 @@
 import { Button } from "@/components/ui"
 import Link from "next/link"
 
-function AdminPage ({ roomId }: { roomId: string }) {
+interface AdminPageProps {
+  roomId: string
+  adminId: string
+}
+
+function AdminPage ({ roomId, adminId }: AdminPageProps) {
   return (
     <main>
-      RoomIdPage: {roomId}
+      <h1>Admin page</h1>
 
-      <Link href="/"><Button className="p-2 bg-red-200 text-black">Home</Button></Link>
+      <p>RoomIdPage: {roomId}</p>
+      <p>adminId: {adminId}</p>
+
+      <Link href="/">
+        <Button className="p-2 bg-red-200 text-black">Home</Button>
+      </Link>
     </main>
   )
 }
