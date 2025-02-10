@@ -13,7 +13,6 @@ async function createRoomAndPlayer (adminName: string): Promise<createRoomAndPla
 
     // Crear el jugador dentro de la sala
     const { error: playerError } = await DbAddPlayer(roomData.id, adminId, adminName)
-    console.error(playerError)
     if (playerError) throw new Error('Error creating player')
 
     return { room: roomData, adminId }
