@@ -1,10 +1,11 @@
 import { DbAddPlayer } from '@/libs/supabase/tables/players'
 import { DbCreateRoom } from '@/libs/supabase/tables/rooms'
 import type { createRoomAndPlayerResponse } from '@/types/createRoom'
+import { generateHash } from '@/utils/hash'
 
 async function createRoomAndPlayer (adminName: string): Promise<createRoomAndPlayerResponse> {
   // Crear id de nuevo usuario
-  const adminId = crypto.randomUUID()
+  const adminId = generateHash()
 
   try {
     // Crear la sala
