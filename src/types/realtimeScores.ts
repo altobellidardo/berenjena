@@ -10,3 +10,10 @@ export interface Score {
   room_id: string
   round: number
 }
+
+export interface Player {
+  id: string
+  room_id: string
+  name: string
+  created_at: string
+}

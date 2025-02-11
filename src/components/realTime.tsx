@@ -1,6 +1,6 @@
 'use client'
 
-import { DBsubscribeScores } from "@/libs/supabase/tables/scores"
+import { DBsubscribeScores } from "@/libs/supabase/tables/scoresClient"
 import { useEffect, useState } from "react"
 import type { Payload, Score } from "@/types/realtimeScores"
 
