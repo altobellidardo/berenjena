@@ -15,6 +15,7 @@ interface HomeCardProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 function HomeCard ({
+  children,
   title,
   description,
   action,
@@ -48,6 +49,7 @@ function HomeCard ({
           name={inputName}
           placeholder={inputPlaceholder}
         />
+        {children}
         <Button
           type="submit"
           className='w-full'
