@@ -32,3 +32,20 @@ export async function DbGetPlayers (roomId: string) {
     .select('name, id')
     .eq('room_id', roomId)
 }
+
+export async function DbCreatePlayer (name: string, roomId: string) {
+  return await supabase
+    .from('players')
+    .insert({ room_id: roomId, name })
+    .select('*')
+    .single()
+}
+
+export async function DbGetPlayer (roomId: string, name: string) {
+  return await supabase
+    .from('players')
+    .select('*')
+    .eq('room_id', roomId)
+    .eq('name', name)
+    .single()
+}

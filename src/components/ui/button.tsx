@@ -2,10 +2,10 @@ import { forwardRef } from "react";
 import { cn } from "@/libs/tw";
 
 const variantStyles = {
-  default: "bg-brand-blue text-white hover:bg-brand-blue/70",
+  default: "bg-brand-blue text-brand-white hover:bg-brand-blue/70",
   destructive: "bg-destructive text-destructive-foreground hover:bg-destructive/90",
   outline: "border border-purple-500/20 bg-background hover:bg-purple-600/20 hover:text-purple-400",
-  secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80",
+  secondary: "bg-brand-midnight text-brand-white hover:bg-brand-midnight/80",
   ghost: "hover:bg-accent hover:text-accent-foreground",
   link: "text-primary underline-offset-4 hover:underline",
 } as const;
