@@ -1,6 +1,7 @@
 import createRoom from '@/actions/createRoom'
 import joinRoom from '@/actions/joinRoom'
 import HomeCard from '@/components/homeCard'
+import Input from '@/components/ui/input'
 
 export default function Home ()  {
   return (
@@ -27,7 +28,9 @@ export default function Home ()  {
             inputName='roomCode'
             inputPlaceholder='ab12cd3e'
             buttonText='Unirse'
-          />
+          >
+            <Input type='text' name='name' placeholder='Jugador 1' />
+          </HomeCard>
         </main>
       </div>
     </div>
