@@ -1,6 +1,6 @@
 'use server'
 
-import { DbCreatePlayer, DbGetPlayers } from "@/libs/supabase/tables/players"
+import { DbGetPlayer } from "@/libs/supabase/tables/players"
 import { redirect } from "next/navigation"
 
 async function joinRoom (formData: FormData) {
@@ -10,15 +10,8 @@ async function joinRoom (formData: FormData) {
   const name = (formData.get('name') as string)?.trim()
   if (!name) return { error: 'El nombre es obligatorio' }
 
-  const { data: players, error: playersError } = await DbGetPlayers(roomId)
-  if (playersError) console.error(playersError)
-
-  if (players?.find((player) => player.name === name)) {
-    return { error: 'El nombre ya está en uso' }
-  }
-
-  const { error: createPlayerError } = await DbCreatePlayer(name, roomId)
-  if (createPlayerError) console.error(createPlayerError)
+  const { data: playerExists } = await DbGetPlayer(roomId, name)
+  if (playerExists) return { error: 'El nombre ya está en uso' }
 
   return redirect(`/room?id=${roomId}&name=${name}`)
 }
