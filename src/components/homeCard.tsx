@@ -31,7 +31,6 @@ function HomeCard ({
     setError('')
     setLoading(true)
     const formData = new FormData(e.currentTarget)
-    console.log('antes')
     const result = await action(formData)
     setLoading(false)
     if (result.error) {

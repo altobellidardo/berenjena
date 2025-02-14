@@ -10,7 +10,10 @@ interface GuestPageProps {
 function GuestPage ({ player }: GuestPageProps) {
   console.log('player', player)
   return (
-    <main>GuestPage</main>
+    <main>
+      GuestPage
+      <p>{JSON.stringify(player, null, 2)}</p>
+    </main>
   )
 }
 
