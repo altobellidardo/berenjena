@@ -1,5 +1,6 @@
 import { verifyToken } from "@/libs/jwt"
 import { DbGetAdmin } from "@/libs/supabase/tables/rooms"
+import type { userToken } from "@/types/game"
 
 export async function isAdmin (token: string | undefined, roomId: string) {
   // si no hay token no es admin
@@ -7,7 +8,7 @@ export async function isAdmin (token: string | undefined, roomId: string) {
 
   let tokenData
   try {
-    tokenData = verifyToken(token) as { id: string, name: string }
+    tokenData = verifyToken(token) as userToken
   } catch (error) {
     console.error(error)
     return false

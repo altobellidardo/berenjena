@@ -2,15 +2,12 @@
 import Button from "./ui/button"
 import Scoreboard from "./scoreboard";
 import { CirclePlus, UserPen } from "lucide-react";
-import Link from "next/link";
 import ShareLink from "./shareLink";
+import { players } from "@/types/game";
+import GameActions from "./gameActions";
 
 interface AdminPageProps {
-  players: {
-    name: string;
-    id: string;
-    scores: { points: number; round: number }[];
-  }[]
+  players: players
   adminId: string
   roomId: string
 }
@@ -36,14 +33,13 @@ function AdminPage ({
         <header className="space-y-2">
           <h1 className="text-4xl font-bold text-center text-brand-midnight">Anotador Berenjena</h1>
           <h3 className="text-lg">Código de la sala: <strong className="text-brand-midnight">{roomId}</strong></h3>
-          <ShareLink route={`/room?id=${roomId}&name=${adminId}`} />
+          <ShareLink route={`/room?id=${roomId}`} />
         </header>
-
 
         <section>
           <h2 className="text-2xl mb-4">Acciones</h2>
 
-          <div className="flex gap-2">
+          {/* <div className="flex gap-2">
             <Button>
               <UserPen className="mr-2" />
               Modificar jugadores
@@ -52,17 +48,17 @@ function AdminPage ({
               <CirclePlus className="mr-2" />
               Nueva ronda
             </Button>
-          </div>
+          </div> */}
 
           {/* <form action={addScore} className="flex">
             <input type="number" name="score" min={0} max={99} className="text-center" />
             <Button type="submit">Añadir puntuación</Button>
           </form> */}
+
+          <GameActions players={players} />
         </section>
 
         <section>
-          <h2 className="text-2xl">Tabla de puntuaciones</h2>
-
           <Scoreboard players={players} />
         </section>
 
